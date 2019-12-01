@@ -40,7 +40,7 @@ public class Barbeiro extends Pessoa implements Runnable {
 				}
 				
 				
-				Thread.sleep(new Random().nextInt(200) + 100); //tempo de realizaçao do corte
+				Thread.sleep(new Random().nextInt(2000) + 1000); //tempo de realizaçao do corte
 				
 				b.corteTerminado(c);
 			}catch(InterruptedException e) {System.out.println("Erro no barbeiro");}

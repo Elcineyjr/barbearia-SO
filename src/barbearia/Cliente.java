@@ -24,7 +24,7 @@ public class Cliente extends Pessoa implements Runnable{
 				if(b.cortaCabelo(this))
 					cabelo_cortado = false;
 				
-				Thread.sleep(new Random().nextInt(200) + 300); //espera para tentar cortar novamente
+				Thread.sleep(new Random().nextInt(2000) + 3000); //espera para tentar cortar novamente
 			}catch(InterruptedException e) {System.out.println("Erro no cliente");} 
 		}
 	}
