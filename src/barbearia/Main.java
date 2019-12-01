@@ -5,10 +5,6 @@ import java.util.LinkedList;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO
-		// * essa classe vai ser a main do trabalho
-		// * transformar barbearia num monitor
-		// * cliente e barbeiro em loop tentando chamar as funçoes do monitor
 		
 		//converte os parametros do programa para inteiro 
 		int num_barbeiros = Integer.parseInt(args[0]);
@@ -21,37 +17,33 @@ public class Main {
 		
 		//cria uma lista de barbeiros 
 		LinkedList<Barbeiro> lista_de_barbeiros = new LinkedList<Barbeiro>();
+		
+		//adiciona na lista a quantidade de barbeiros passados para o programa 
 		for(int i = 1; i < num_barbeiros+1; i++) {
 			Barbeiro barbeiro = new Barbeiro(i, monitor);
 			lista_de_barbeiros.add(barbeiro);
-			
 		}
 		
+		//cria uma lista de barbeiros 
+		LinkedList<Cliente> lista_de_clientes = new LinkedList<Cliente>();
 		
-		//cria o barbeiro e o cliente e rodam como threads
-		Cliente regata = new Cliente(20, monitor);
-		Cliente leo = new Cliente(30, monitor);
+		//adiciona na lista a quantidade de clientes passados para o programa 
+		for(int i = 1; i < total_clientes+1; i++) {
+			Cliente cliente = new Cliente(i, monitor);
+			lista_de_clientes.add(cliente);
+		}
 		
-		Thread t1 = new Thread(lista_de_barbeiros.getFirst());
-		Thread t2 = new Thread(regata);
-		Thread t3 = new Thread(leo);
-		t1.start();
-		t2.start();
-		t3.start();
+		//cria uma thread para cada barbeiro 
+		for(int i = 0; i < num_barbeiros; i++) {
+			Thread t = new Thread(lista_de_barbeiros.get(i));
+			t.start();
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//		System.out.println("roberval: " + roberval.get_barbeiroID() + "\nregata: " + regata.get_clienteID());
-//		System.out.println("barbeiros: " + num_barbeiros + "\n" + "cadeiras: " + num_cadeiras + "\n" + "total clientes: " + total_clientes );
+		//cria uma thread para cada cliente
+		for(int i = 0; i < total_clientes; i++) {
+			Thread t = new Thread(lista_de_clientes.get(i));
+			t.start();
+		}
 	}
 
 }

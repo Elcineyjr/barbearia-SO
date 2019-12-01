@@ -17,15 +17,12 @@ public class Cliente extends Pessoa implements Runnable{
 
 	@Override
 	public void run() {
-		for(int i = 0; i < 3; i++) {			
+		for(;;) {			
 			try {
+				if(b.cortaCabelo(this))
+					cabelo_cortado = false;
 				
-				System.out.println(this.id + "tentando entrar na barbearia");
-				b.cortaCabelo(this);
-				
-				cabelo_cortado = false;
-				
-				Thread.sleep(5000); //espera para tentar cortar novamente
+				Thread.sleep(5000); //espera para tentar cortar novamente //TODO variar tempo
 			}catch(InterruptedException e) {System.out.println("Erro no cliente");} 
 		}
 	}
