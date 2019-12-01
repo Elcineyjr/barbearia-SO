@@ -1,6 +1,8 @@
 package barbearia;
 
-public class Barbeiro extends Pessoa implements Runnable{
+import java.util.Random;
+
+public class Barbeiro extends Pessoa implements Runnable {
 	Barbearia b;
 	
 	public Barbeiro(int id, Barbearia b) {
@@ -38,7 +40,7 @@ public class Barbeiro extends Pessoa implements Runnable{
 				}
 				
 				
-				Thread.sleep(4000); //tempo de realizaçao do corte //TODO variar tempo
+				Thread.sleep(new Random().nextInt(200) + 100); //tempo de realizaçao do corte
 				
 				b.corteTerminado(c);
 			}catch(InterruptedException e) {System.out.println("Erro no barbeiro");}

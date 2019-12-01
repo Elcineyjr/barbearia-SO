@@ -1,5 +1,7 @@
 package barbearia;
 
+import java.util.Random;
+
 import javax.activity.InvalidActivityException;
 
 public class Cliente extends Pessoa implements Runnable{
@@ -22,7 +24,7 @@ public class Cliente extends Pessoa implements Runnable{
 				if(b.cortaCabelo(this))
 					cabelo_cortado = false;
 				
-				Thread.sleep(5000); //espera para tentar cortar novamente //TODO variar tempo
+				Thread.sleep(new Random().nextInt(200) + 300); //espera para tentar cortar novamente
 			}catch(InterruptedException e) {System.out.println("Erro no cliente");} 
 		}
 	}
